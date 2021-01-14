@@ -1,4 +1,4 @@
-#!/usr/bin/env python3 
+#!/usr/bin/env python3
 
 import sys
 import numpy as np
@@ -28,7 +28,7 @@ c = 299792458 # speed of light in metres per second
 yr = 31557600 # number of seconds in a year
 au = 149597870700 # au in metres
 
-# 
+#
 
 try:
 	with open("SETI_message.txt") as inputdata:
@@ -51,8 +51,8 @@ data = data.reshape(7, 1, 757, 359)
 # plot the data
 
 '''
- picture #0: axes on the bottom and right side of the box 
- picture #1: counting from 0 to 
+ picture #0: axes on the bottom and right side of the box
+ picture #1: counting from 0 to
  picture #2: counting prime numbers
  picture #3: sine wave
  picture #4: alien picture
@@ -85,7 +85,7 @@ plt.show()
 # extracts relevant line of image, converts it to a string and then from
 # binary into a decimal number. as the binary numbers in the image 1 and 2
 # have the least significant digit to the left rather than to the right,
-# as is usual we have to reverse the order of the string before we convert 
+# as is usual we have to reverse the order of the string before we convert
 # it to its decimal representation
 
 s1 = int(''.join(np.flip(data[3, 0, 0, :], axis=0).astype(str)), 2)
@@ -105,16 +105,16 @@ p2 = int(''.join(np.flip(data[6, 0, 1, :], axis=0).astype(str)), 2)
 
 '''
  the scale in the problems is set by s1
- 
- the two different numbers in each picture contain 
+
+ the two different numbers in each picture contain
  information relating to:
  	#1: length information
  	#2: temporal information
 '''
 
 # recover time for signal to reach earth given in hint (50 years)
-dist = s2/s1 * t / yr 
-dist = "{0:.5g}".format(dist) 
+dist = s2/s1 * t / yr
+dist = "{0:.5g}".format(dist)
 
 print("time for signal to reach earth:", dist, "yrs")
 
@@ -148,7 +148,7 @@ sol_s = "{0:.5g}".format(sol_s)
 
 print("planet distance from star:", sol_s, "AU")
 
-# age of solar system  
+# age of solar system
 age_s = p2/s1 * t / yr
 age_s = "{0:.5g}".format(age_s)
 
